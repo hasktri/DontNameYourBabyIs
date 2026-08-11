@@ -1,0 +1,13 @@
+# Node dependencies and build output
+**/node_modules/
+**/dist/
+
+# Local tooling and temporary workspace output
+work/
+outputs/
+*.log
+
+# Local environment files
+.env
+.env.*
+!.env.example
