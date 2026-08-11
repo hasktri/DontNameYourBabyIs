@@ -1,11 +1,15 @@
 const path = require('path');
+const webpack = require('webpack');
+
+const isGitHubPages = process.env.GITHUB_PAGES === 'true';
+const apiBaseUrl = process.env.API_BASE_URL || 'http://localhost:4000/';
 
 module.exports = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/',
+    publicPath: isGitHubPages ? '/DontNameYourBabyIs/' : '/',
   },
   module: {
     rules: [
@@ -25,6 +29,11 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.API_BASE_URL': JSON.stringify(apiBaseUrl),
+    }),
+  ],
   devServer: {
     static: {
       directory: path.join(__dirname, 'public'),
