@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 const isGitHubPages = process.env.GITHUB_PAGES === 'true';
-const apiBaseUrl = process.env.API_BASE_URL || 'http://localhost:4000/';
+const apiBaseUrl = process.env.API_BASE_URL || 'https://dontnameyourbabyisapi.onrender.com/';
 
 module.exports = {
   entry: './src/index.js',
